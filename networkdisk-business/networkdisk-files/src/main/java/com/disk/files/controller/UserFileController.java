@@ -281,7 +281,7 @@ public class UserFileController {
         context.setUserId(UserIdUtil.get());
         String fileTypes = fileSearchParam.getFileTypes();
         if (StringUtils.isNotBlank(fileTypes) && !Objects.equals(FileConstant.ALL_FILE_TYPE, fileTypes)) {
-            List<Integer> fileTypeArray = Splitter.on(BaseConstant.COMMON_SEPARATOR).splitToList(fileTypes).stream().map(Integer::valueOf).collect(Collectors.toList());
+            List<Integer> fileTypeArray = Splitter.on(BaseConstant.COMMA).splitToList(fileTypes).stream().map(Integer::valueOf).collect(Collectors.toList());
             context.setFileTypeArray(fileTypeArray);
         }
         List<FileSearchVO> result = userFileService.search(context);
